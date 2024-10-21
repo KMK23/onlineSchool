@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ListPage from '../components/ListPage';
 import searchImg from '../assets/search.svg';
-import styles from './CourseListpage.module.css';
+import styles from './CourseListPage.module.css';
 import CourseItem from '../components/CourseItem';
 import { getDatas } from '../api/firebase';
 import Warn from '../components/Warn';
