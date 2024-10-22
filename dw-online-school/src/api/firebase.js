@@ -1,4 +1,4 @@
-import { initializeApp } from 'firebase/app';
+import { initializeApp } from "firebase/app";
 import {
   arrayRemove,
   arrayUnion,
@@ -9,15 +9,15 @@ import {
   query,
   updateDoc,
   where,
-} from 'firebase/firestore';
+} from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyDysKNGaSgFliRlmIL9e-cP1YbakXZCHQs',
-  authDomain: 'dwos-a8465.firebaseapp.com',
-  projectId: 'dwos-a8465',
-  storageBucket: 'dwos-a8465.appspot.com',
-  messagingSenderId: '895188158918',
-  appId: '1:895188158918:web:be31f735a2cf21c4f84ac7',
+  apiKey: "AIzaSyC9Y2muR79WrI0bjBXhCnNuQxBHaRajIM4",
+  authDomain: "dwos-bab13.firebaseapp.com",
+  projectId: "dwos-bab13",
+  storageBucket: "dwos-bab13.appspot.com",
+  messagingSenderId: "294440820448",
+  appId: "1:294440820448:web:bb750e3a8c8fd4b61f7a85",
 };
 
 // Initialize Firebase
@@ -51,8 +51,8 @@ async function getData(collectionName, option) {
 async function getMember(values) {
   const { email, password } = values;
 
-  const collect = collection(db, 'member');
-  const q = query(collect, where('email', '==', email));
+  const collect = collection(db, "member");
+  const q = query(collect, where("email", "==", email));
   const snapshot = await getDocs(q);
   const docs = snapshot.docs;
 
@@ -60,17 +60,17 @@ async function getMember(values) {
   let memberObj = {};
 
   if (docs.length == 0) {
-    message = '이메일이 올바르지 않습니다.';
+    message = "이메일이 올바르지 않습니다.";
   } else {
     const memberData = { ...docs[0].data(), docId: docs[0].id };
     if (password === memberData.password) {
-      message = '로그인에 성공했습니다.';
+      message = "로그인에 성공했습니다.";
       memberObj = {
         email: memberData.email,
         docId: memberData.docId,
       };
     } else {
-      message = '비밀번호가 일치하지 않습니다.';
+      message = "비밀번호가 일치하지 않습니다.";
     }
   }
 
@@ -85,11 +85,11 @@ async function updateDatas(collectionName, docId, updateObj, option) {
     if (!option) {
       await updateDoc(docRef, updateObj);
     } else {
-      if (option.type == 'ADD') {
+      if (option.type == "ADD") {
         await updateDoc(docRef, {
           [option.fieldName]: arrayUnion(updateObj),
         });
-      } else if (option.type == 'DELETE') {
+      } else if (option.type == "DELETE") {
         await updateDoc(docRef, {
           [option.fieldName]: arrayRemove(updateObj),
         });

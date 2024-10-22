@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
-import Input from './Input';
-import LoginButton from './LoginButton';
-import KakaoButton from './KakaoButton';
-import { getMember } from '../api/firebase';
+import React, { useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import styled from "styled-components";
+import Input from "./Input";
+import LoginButton from "./LoginButton";
+import KakaoButton from "./KakaoButton";
+import { getMember } from "../api/firebase";
 
 const LoginContainer = styled.div`
   width: 400px;
@@ -42,8 +42,8 @@ function Login(props) {
   const { state } = useLocation();
   const navigate = useNavigate();
   const [values, setValues] = useState({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   });
 
   const handleChange = (e) => {
@@ -63,9 +63,9 @@ function Login(props) {
       alert(message);
     } else {
       // 로그인 성공
-      localStorage.setItem('member', JSON.stringify(memberObj));
+      localStorage.setItem("member", JSON.stringify(memberObj));
       alert(message);
-      navigate(state ? state : '/', { replace: true });
+      navigate(state ? state : "/", { replace: true });
     }
   };
 
@@ -76,21 +76,21 @@ function Login(props) {
         회원이 아니신가요? <Link>회원가입 하기</Link>
       </Description>
       <form onSubmit={handleLogin}>
-        <Label htmlFor='email'>이메일</Label>
+        <Label htmlFor="email">이메일</Label>
         <Input
-          type='email'
-          id='email'
-          placeholder='styled@DW.kr'
+          type="email"
+          id="email"
+          placeholder="styled@DW.kr"
           onChange={handleChange}
-          name='email'
+          name="email"
         />
-        <Label htmlFor='password'>비밀번호</Label>
+        <Label htmlFor="password">비밀번호</Label>
         <Input
-          type='password'
-          id='password'
-          placeholder='비밀번호'
+          type="password"
+          id="password"
+          placeholder="비밀번호"
           onChange={handleChange}
-          name='password'
+          name="password"
         />
         <LoginButton>로그인 하기</LoginButton>
       </form>
